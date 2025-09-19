@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  edp-login:
+    build: .
+    environment:
+      - CLIENT_ID=6qvkl7ibvspbfjabmhqhije6e1 # client id da EDP Solar
+      - REDIRECT_URI=edpc://solar
+      - USERNAME=[SEU EMAIL]
+      - PASSWORD=[SUA SENHA]
+      - AUTH_HOST=prd-accountlinking.auth.eu-west-1.amazoncognito.com
+      - TOKEN_SAVE_PATH=/data/token.json
+    volumes:
+      - ./data:/data
+    network_mode: "bridge"
+    ports:
+      - 8000:8000
+    shm_size: '1gb'
